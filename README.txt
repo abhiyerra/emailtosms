@@ -47,7 +47,7 @@ emailtosms.send_sms(:subject => "Subject",
 
 == INSTALL:
 
-$ gem sources -a http://gems.github.com (you only have to do this once)
+$ sudo gem sources -a http://gems.github.com # (you only have to do this once)
 $ sudo gem install abhiyerra-emailtosms
 
 == LICENSE:
