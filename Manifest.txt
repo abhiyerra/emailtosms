@@ -1,0 +1,7 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/emailtosms
+lib/emailtosms.rb
+test/test_emailtosms.rb
