@@ -4,8 +4,8 @@ module Carrier
     "Verizon" => "vtext.com",
     "T-Mobile" => "tmomail.net",
     "Sprint" => "messaging.sprintpcs.com",
-    "Nextel" => "messaging.nextel.com"
-    "Virgin Mobile" => "vmobl.com",
+    "Nextel" => "messaging.nextel.com",
+    "Virgin Mobile" => "vmobl.com"
   }
 
   def self.get_email contact

@@ -1,3 +1,5 @@
+require 'carrier'
+
 class EmailToSMS
   VERSION = '0.1.0'
 
@@ -12,11 +14,15 @@ class EmailToSMS
   def send_sms msg, subject, contacts
     msg = "From: #{@from}\n"
 
-    to = contacts == Array ?
-         contacts.collect { |c| Carrier::get_email(c) } :
-         Carrier::get_email(c)
+    to = nil
+    if contacts == Array 
+      to = contacts.collect { |c| Carrier::get_email(c) } 
+      msg << "To: #{to.join(', ')}"
+    else
+      to = Carrier::get_email(contacts)
+      msg << "To: #{to}"
+    end
 
-    msg << "To: #{to.join(', ')}"
     msg << "Subject: #{subject}\n" unless subject.nil?
     msg << "\n"
     msg << "#{msg}" 

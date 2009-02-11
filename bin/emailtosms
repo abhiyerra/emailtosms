@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby -rubygems
+
+require 'net/smtp'
+
+lib_dir = File.expand_path(File.join(File.dirname(__FILE__),'..','lib'))
+unless $LOAD_PATH.include?(lib_dir)
+  $LOAD_PATH << lib_dir
+end
+require 'emailtosms'
+
+smtp = Net::SMTP.new('example.com')
+emailtosms = EmailToSMS.new(smtp, 'emailtosms@example.com')
+emailtosms.send_sms("Testing", "", {:number => "1231231234", :carrier => "AT&T"})
+smtp.finish
