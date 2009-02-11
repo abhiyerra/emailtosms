@@ -9,7 +9,7 @@ class EmailToSMS
     @from = from
   end
 
-  def send_sms msg, subject="", contacts
+  def send_sms msg, subject, contacts
     msg = "From: #{@from}\n"
 
     to = contacts == Array ?
@@ -17,7 +17,7 @@ class EmailToSMS
          Carrier::get_email(c)
 
     msg << "To: #{to.join(', ')}"
-    msg << "Subject: #{subject}\n" unless subject.empty?
+    msg << "Subject: #{subject}\n" unless subject.nil?
     msg << "\n"
     msg << "#{msg}" 
 
