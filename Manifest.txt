@@ -3,5 +3,7 @@ Manifest.txt
 README.txt
 Rakefile
 bin/emailtosms
+emailtosms.gemspec
 lib/emailtosms.rb
+lib/emailtosms/carrier.rb
 test/test_emailtosms.rb
