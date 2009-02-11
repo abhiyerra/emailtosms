@@ -1,14 +1,22 @@
-#!/usr/bin/env ruby -rubygems
+#!/usr/bin/env ruby
 
+require 'rubygems'
 require 'net/smtp'
 
 lib_dir = File.expand_path(File.join(File.dirname(__FILE__),'..','lib'))
-unless $LOAD_PATH.include?(lib_dir)
-  $LOAD_PATH << lib_dir
-end
+$LOAD_PATH << lib_dir unless $LOAD_PATH.include?(lib_dir)
+
 require 'emailtosms'
 
-smtp = Net::SMTP.new('example.com')
-emailtosms = EmailToSMS.new(smtp, 'emailtosms@example.com')
-emailtosms.send_sms("Testing", "", {:number => "1231231234", :carrier => "AT&T"})
-smtp.finish
+smtp = Net::SMTP.new('localhost')
+
+emailtosms = EmailToSMS.new(smtp, 'sms@traytwo.com')
+emailtosms.send_sms(:subject => "Subject", 
+                    :message => "The message body.", 
+                    :to => {:number => "1234561234", :carrier => "AT&T"})
+
+# Another example to send to multiple contacts
+# emailtosms.send_sms(:subject => "Subject", 
+#                     :message => "The message body.", 
+#                     :to => [{:number => "1234561234", :carrier => "AT&T"},
+#                             {:number => "1234561235", :carrier => "Verizon"}])
