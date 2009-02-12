@@ -19,7 +19,7 @@ class EmailToSMS
       to = to.collect { |c| Carrier::get_email(c) } 
       msg << "To: #{to.join(', ')}\n"
     else
-      to = Carrier::get_email(to)
+      to = Carrier::get_sms_email(to)
       msg << "To: #{to}\n"
     end
 

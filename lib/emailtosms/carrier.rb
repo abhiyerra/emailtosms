@@ -8,7 +8,7 @@ module Carrier
     "Virgin Mobile" => "vmobl.com"
   }
 
-  def self.get_email contact
+  def self.get_sms_email contact
     "#{contact[:number]}@#{CARRIERS[contact[:carrier]]}"
   end
 end
